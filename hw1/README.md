@@ -16,7 +16,7 @@
 ## RWD design
 
 Two modes
-* phone mode (`min-width` < 674)
-* normal mode (`min-width` >= 674)
+* phone mode (`min-width` < 1024)
+* normal mode (`min-width` >= 1024)
 
 To observe the difference, one can resize the window horizontally
