@@ -2,10 +2,12 @@
 
 ## Design
 
-* left side is album list
+* left side is album list. Currently there is two albums
 * right side is pictures in that album (not clickable as it is a static site)
+* right upper side is a picture preview section
 * pictures will enlarge when hover over
-* pictures can be downloaded by clicking them
+* pictures can be set at the preview section by clicking them
+* picture in the preview section can be downloaded by clicking them
 * support two screen size: phone mode and normal mode
 
 ## CSS animation
