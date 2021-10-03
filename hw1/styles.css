@@ -36,6 +36,11 @@
     transform: scale(1.1);
 }
 
+.picture .preview {
+    border: 5px solid black;
+    border-radius: 16px;
+}
+
 [class*="col-"] {
     float: left;
     padding: 15px;
@@ -43,6 +48,13 @@
 }
 
 @media only screen and (min-width: 1024px) {
+    .picture .preview {
+        height: 500px;
+    }
+    .picture #preview {
+        max-height: 450px;
+        width: auto;
+    }
     .picture div {
         display: inline;
         margin: 0;
