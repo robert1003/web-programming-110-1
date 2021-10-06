@@ -3,7 +3,7 @@
 ## Design
 
 * left side is album list. Currently there is two albums
-* right side is pictures in that album (not clickable as it is a static site)
+* right side is pictures in that album
 * right upper side is a picture preview section
 * pictures will enlarge when hover over
 * pictures can be set at the preview section by clicking them
@@ -18,7 +18,7 @@
 ## RWD design
 
 Two modes
-* phone mode (`min-width` < 1024)
-* normal mode (`min-width` >= 1024)
+* phone mode (`min-width` < 955)
+* normal mode (`min-width` >= 955)
 
 To observe the difference, one can resize the window horizontally
