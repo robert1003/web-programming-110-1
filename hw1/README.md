@@ -22,3 +22,7 @@ Two modes
 * normal mode (`min-width` >= 955)
 
 To observe the difference, one can resize the window horizontally
+
+## Notes
+
+You may access this website [here](http://cl6.csie.org:1234/)
