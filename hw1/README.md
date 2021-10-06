@@ -6,8 +6,7 @@
 * right side is pictures in that album
 * right upper side is a picture preview section
 * pictures will enlarge when hover over
-* pictures can be set at the preview section by clicking them
-* picture in the preview section can be downloaded by clicking them
+* pictures can be downloaded by clicking them
 * support two screen size: phone mode and normal mode
 
 ## CSS animation
