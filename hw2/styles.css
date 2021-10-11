@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+.afterSelectAlbum {
+    visibility: hidden;
+}
+
 .header {
     border: 5px solid #ce9613;
     background-color: #f9e6ba;
@@ -98,4 +102,16 @@
     .col-12 {
         width: 100%;
     }
+
+    .row-1 {
+        width: 25%;
+    }
+    .row-2 {
+        width: 50%;
+    }
+    .row-3 {
+        width: 75%;
+    }
+    .row-4 {
+        width: 100%;
 }
