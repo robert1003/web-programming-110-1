@@ -11,7 +11,7 @@
 * picture in the preview section can be downloaded by clicking them
 * support two screen size: phone mode and normal mode
 * left-upper region has picture statistics, and button to add new picture (input url) or remove current selected picture
-    * newly added picture will be at **THE BOTTOM**
+    * newly added picture will be at **THE TOP**
 * picture will enlarge when hover
 * list item (on the left) will change background color when hover
 * Will have alert if clicked on empty album
