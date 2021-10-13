@@ -52,9 +52,17 @@ function renderPics() {
 
 function loadPic(name) {
     console.log(name);
-    fetch('album_url.json')
+    const options = {
+        mode: 'cors',
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+        },
+    };
+    fetch('http://cl6.csie.org:16384/wp1101/hw2/album_url.json', options)
         .then(res => res.json())
         .then(data => {
+            console.log(data);
             if (name in data) {
                 albumName = name;
                 pictureSrc = data[name];
