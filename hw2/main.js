@@ -51,7 +51,6 @@ function renderPics() {
 }
 
 function loadPic(name) {
-    console.log(name);
     const options = {
         mode: 'cors',
         method: 'GET',
@@ -62,13 +61,11 @@ function loadPic(name) {
     fetch('http://cl6.csie.org:16384/wp1101/hw2/album_url.json', options)
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             if (name in data) {
                 albumName = name;
                 pictureSrc = data[name];
                 renderPics();
             } else {
-                console.log(name);
                 alert(`Album ${name} is empty!!!!!!`);
             }
         });
@@ -99,15 +96,16 @@ function switchPic(obj) {
 
 async function addPic() {
     let url = prompt('enter picture url:');
-    let valid = await fetch(url).then(res => {
-        return res.status === 200;
-    });
-    if (!valid) {
+    img = document.createElement('img');
+    img.onload = () => {
+        pictureSrc.unshift(url);
+        renderPics();
+    };
+    img.onerror = () => {
         alert(`invalid image url: ${url}`);
-        return;
     }
-    pictureSrc.push(url);
-    renderPics();
+    img.src = url;
+    img.remove();
 }
 
 function removeSelectedPic() {
