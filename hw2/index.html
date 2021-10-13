@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <title>Digital Spongebob Album</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    </head>
+
+    <body>
+        <script src="main.js"></script>
+        <!-- header -->
+        <div class="header">
+            <center>
+                <h1>Digital Spongebob Album</h1>
+            </center>
+        </div>
+
+        <div class="content">
+            <!-- left column for albums -->
+            <div class="col-3">
+                <div class="row-1" style="width: 100%;">
+                    <button onclick="addPic();" class="afterSelectAlbum" id="addPicBtn">Add pic</button>
+                    <button onclick="removeSelectedPic();" class="afterSelectAlbum" id="rmPicBtn">Remove current pic</button>
+                    <div class="afterSelectAlbum" id="picStatistic">
+                        <ul>
+                            <li id="picCnt"> picture count </li>
+                            <li id="curPicId"> current picture id </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row-3 album">
+                    <ul>
+                        <li onclick="changeColor(this);loadPic(this.textContent)">Spongebob</li>
+                        <li onclick="changeColor(this);loadPic(this.textContent)">Spongebob2</li>
+                        <li onclick="changeColor(this);loadPic(this.textContent)">Empty</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-9 picture" id="pictures_start">
+                <center><h1> Click an album! </h1></center>
+            </div>
+        </div>
+    </body>
+</html>
