@@ -8,18 +8,19 @@
 
     </head>
 
-    <body>
+    <body onload="adjustHeight();">
         <script src="main.js"></script>
         <!-- header -->
-        <div class="header">
-            <center>
-                <h1>Digital Spongebob Album</h1>
-            </center>
-        </div>
+        
 
-        <div class="content">
+        <div class="content col-12">
+            <div class="header" id="header">
+                <center>
+                    <h1>Digital Spongebob Album</h1>
+                </center>
+            </div>
             <!-- left column for albums -->
-            <div class="col-3">
+            <div class="col-3" id="left-col">
                 <div class="row-1" style="width: 100%;">
                     <button onclick="addPic();" class="afterSelectAlbum" id="addPicBtn">Add pic</button>
                     <button onclick="removeSelectedPic();" class="afterSelectAlbum" id="rmPicBtn">Remove current pic</button>

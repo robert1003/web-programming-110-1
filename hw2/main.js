@@ -6,6 +6,45 @@ function htmlToElement(html) {
     return template.content.firstChild;
 }
 
+function adjustHeight() {
+    let headerHeight = 0;
+    if (document.documentElement.clientWidth >= 800) {
+        headerHeight = document.getElementById("header").offsetHeight;
+        document.getElementById("left-col").style.top = `${headerHeight}px`;
+    } else {
+        headerHeight = document.getElementById("left-col").offsetHeight;
+        document.getElementById("left-col").style.top = `0`;
+    }
+    document.getElementById("preview-div").style.top = `${headerHeight}px`;
+}
+
+window.onresize = adjustHeight; () => {
+    let headerHeight = 0;
+    if (document.documentElement.clientWidth >= 800) {
+        headerHeight = document.getElementById("header").offsetHeight;
+    } else {
+        headerHeight = document.getElementById("left-col").offsetHeight;
+    }
+    console.log(headerHeight);
+    document.getElementById("preview-div").style.top = `${headerHeight}px`;
+    /*
+    let divWidth = document.getElementById("preview-div").offsetWidth;
+    let pic_width = document.getElementById("preview").offsetWidth;
+    console.log(pic_width, divWidth);
+    if (pic_width - divWidth > -50) {
+        document.getElementById("preview").style.maxHeight = "none";
+        document.getElementById("preview").style.width = "none";
+        document.getElementById("preview").style.maxWidth = `${divWidth - 50}px`;
+        document.getElementById("preview").style.height = "auto";
+    } else {
+        document.getElementById("preview").style.maxHeight = "350px";
+        document.getElementById("preview").style.width = "auto";
+        document.getElementById("preview").style.maxWidth = "none";
+        document.getElementById("preview").style.height = "none";
+    }
+    */
+};
+
 var albumName = null;
 var pictureSrc = null;
 
@@ -13,8 +52,12 @@ function renderPics() {
     let picture_root = document.getElementById("pictures_start");
     picture_root.innerHTML = "";
     // insert big preview area
+    let headerHeight = 0;
+    if (document.documentElement.clientWidth >= 800) {
+        headerHeight = document.getElementById("header").offsetHeight;
+    }
     const firstElemHTML = `
-        <div class="col-12 preview">
+        <div class="col-12 preview" style="top: ${headerHeight}px" id="preview-div">
             <center>
                 <a href="" id="preview_link">
                     <img src="" id="preview" style="transform: none;">
@@ -65,6 +108,8 @@ function loadPic(name) {
                 albumName = name;
                 pictureSrc = data[name];
                 renderPics();
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
             } else {
                 alert(`Album ${name} is empty!!!!!!`);
             }
@@ -88,8 +133,8 @@ function switchPic(obj) {
 
     document.getElementById("preview").src = src;
     document.getElementById("preview_link").href = src;
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    //document.body.scrollTop = 0;
+    //document.documentElement.scrollTop = 0;
     // update selected image idx
     document.getElementById('curPicId').textContent = `current picture id : ${Number.parseInt(img.id.split('_')[1])+1}`;
 }

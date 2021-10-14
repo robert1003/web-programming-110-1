@@ -11,6 +11,14 @@
     background-color: #f9e6ba;
     color: #ce9613;
     padding: 15px;
+    z-index: 100;
+}
+
+#left-col {
+    background-color: rgba(255, 255, 255, 1.0);
+    z-index: 100;
+    position: sticky;
+    top: 0;
 }
 
 .album ul {
@@ -43,6 +51,10 @@
 .picture .preview {
     border: 5px solid black;
     border-radius: 16px;
+    background-color: rgba(255, 255, 255, 1.0);
+    z-index: 100;
+    position: sticky;
+    top: 0;
 }
 
 [class*="col-"] {
@@ -51,9 +63,19 @@
     width: 100%;
 }
 
-@media only screen and (min-width: 955px) {
+@media only screen and (min-width: 800px) {
+    #left-col {
+        position: sticky;
+        top: 0;
+    }
+    .header {
+        position: sticky;
+        top: 0;
+    }
     .picture .preview {
         height: 400px;
+        position: sticky;
+        top: 0;
     }
     .picture #preview {
         max-height: 350px;
