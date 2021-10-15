@@ -12,6 +12,7 @@
 * support two screen size: phone mode and normal mode
 * left-upper region has picture statistics, and button to add new picture (input url) or remove current selected picture
     * newly added picture will be at **THE TOP**
+    * can try this image: https://i.imgur.com/zPldZnu.png
 * picture will enlarge when hover
 * list item (on the left) will change background color when hover
 * Will have alert if clicked on empty album
