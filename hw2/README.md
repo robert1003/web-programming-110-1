@@ -1,5 +1,8 @@
 # wp1101
 
+**PLEASE HOST A WEB SERVER FOR TESTING, DO NOT DOUBLE-CLICK index.html**
+Thanks for your cooperation.
+
 ## Design
 
 * left side is album list. Currently there is two albums
@@ -19,8 +22,8 @@
 ## RWD design
 
 Two modes
-* phone mode (`min-width` < 955)
-* normal mode (`min-width` >= 955)
+* phone mode (`min-width` < 800)
+* normal mode (`min-width` >= 800)
 
 To observe the difference, one can resize the window horizontally
 

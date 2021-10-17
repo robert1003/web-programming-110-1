@@ -140,7 +140,7 @@ function switchPic(obj) {
 }
 
 async function addPic() {
-    let url = prompt('enter picture url:');
+    let url = prompt('enter picture url:', 'https://i.imgur.com/zPldZnu.png');
     img = document.createElement('img');
     img.onload = () => {
         pictureSrc.unshift(url);
