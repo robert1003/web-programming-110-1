@@ -66,9 +66,17 @@ body {
 .button.operator {
   background: #f1a33c;
 }
+.button.operator.active {
+  color: #f1a33c;
+  background: white;
+}
 
 .button.memory {
   background: #211f1f;
+}
+.button.memory.active {
+  color: #211f1f;
+  background: white;
 }
 
 .button.number-0 {

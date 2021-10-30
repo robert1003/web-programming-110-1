@@ -52,17 +52,21 @@ class Calculator {
     this.valStk.push("0");
   }
   processValue(val) {
-    let a = String(Math.round(parseFloat(val)))
+    if (isNaN(val)) return "Error";
+    if (!isFinite(val)) return val;
+    if (val.length <= 8) return val;
+
+    let a = Math.round(parseFloat(val)).toString()
     let b = (parseFloat(val) - a).toPrecision(Math.max(1, 8 - a.length - 1));
     console.log(a, b);
-    if (a.length > 9) return parseFloat(a).toExponential(2);
+    if (a.length > 8) return parseFloat(a).toExponential(2);
     if (a === "0") {
-      if (String(parseFloat(val)).length > 9) return parseFloat(val).toExponential(2);
-      return String(parseFloat(val));
+      if (parseFloat(val).toString().length > 9) return parseFloat(val).toExponential(2);
+      return parseFloat(val).toString();
     }
-    if (parseFloat(b) < 1e-8) return a;
-    if ((a + "." + b.split(".")[1]).length > 9) return a;//parseFloat(val).toExponential(3);
-    return a + "." + b.split(".")[1];
+    if (Math.abs(parseFloat(b)) < 1e-8) return a;
+    if ((a + "." + b.split(".")[1]).length > 8) return a;//parseFloat(val).toExponential(3);
+    return (a + "." + b.split(".")[1]).trimRight("0");
   }
   faceValue() {
     let val = this.valStk.at(-1);
@@ -71,7 +75,7 @@ class Calculator {
     return this.processValue(val);
   }
   nextDigit(digit) {
-    let prev = this.valStk.pop();
+    let prev = this.valStk.pop(), backup = prev;
     if (prev === null || this.isResult) prev = "0";
     if (prev === "0" && digit !== ".") {
       if (digit !== "0") prev = digit;
@@ -79,6 +83,10 @@ class Calculator {
       if (prev.indexOf(".") === -1) prev += ".";
     } else {
       prev += digit;
+    }
+    if (prev.length > 8) {
+      this.valStk.push(backup);
+      return;
     }
     this.isResult = false;
     this.valStk.push(prev);
@@ -156,6 +164,7 @@ class Calculator {
   nextFunc(func) {
     let num = this.valStk.pop();
     if (num === null) num = this.valStk.at(-1);
+    num = parseFloat(num);
 
     if (func === Operator.Neg) num = -num;
     else if (func === Operator.Percent) num = num * 0.01;
@@ -164,8 +173,9 @@ class Calculator {
     else if (func === Operator.Inv) num = 1 / num;
     this.isResult = true;
 
+    num = String(num);
     this.history.val = num;
-    this.valStk.push(String(num));
+    this.valStk.push(num);
   }
   nextMem(mem) {
     let val = this.valStk.at(-1);
@@ -216,26 +226,49 @@ function App() {
   const [val, setVal] = useState("0");
 
   let clickNum = (e) => {
+    if (calculator.valStk.at(-1) === null) {
+      document.getElementById(calculator.opStk.at(-1)).classList.remove("active");
+    }
     calculator.nextDigit(e.target.textContent);
     console.log(calculator.valStk, calculator.opStk, calculator.history);
     setVal(calculator.faceValue());
   }
   let clickOp = (e) => {
+    if (calculator.valStk.at(-1) === null) {
+      document.getElementById(calculator.opStk.at(-1)).classList.remove("active");
+    }
     calculator.nextOp(parseInt(e.target.id));
     console.log(calculator.valStk, calculator.opStk, calculator.history);
     setVal(calculator.faceValue());
+    if (calculator.valStk.at(-1) === null) {
+      document.getElementById(calculator.opStk.at(-1)).classList.add("active");
+    }
   }
   let clickFunc = (e) => {
+    if (calculator.valStk.at(-1) === null) {
+      document.getElementById(calculator.opStk.at(-1)).classList.remove("active");
+    }
     calculator.nextFunc(parseInt(e.target.id));
     console.log(calculator.valStk, calculator.opStk, calculator.history);
     setVal(calculator.faceValue());
   }
   let clickMem = (e) => {
+    let isNullBefore = calculator.valStk.at(-1) === null;
     calculator.nextMem(parseInt(e.target.id));
     console.log(calculator.valStk, calculator.opStk, calculator.history, calculator.memory);
     setVal(calculator.faceValue());
+
+    if (isNullBefore && calculator.valStk.at(-1)) {
+      document.getElementById(calculator.opStk.at(-1)).classList.remove("active");
+    }
+
+    if (calculator.memory !== null) document.getElementById(Operator.MemR).classList.add("active");
+    else document.getElementById(Operator.MemR).classList.remove("active");
   }
   let clear = (e) => {
+    if (calculator.valStk.at(-1) === null) {
+      document.getElementById(calculator.opStk.at(-1)).classList.remove("active");
+    }
     if (e.target.textContent === "C") {
       calculator.clear();
     } 
