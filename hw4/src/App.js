@@ -52,7 +52,9 @@ function ComponentMain({ todoList, addItem, dropItem, flipItem, status, setStatu
 										/>
 										<label htmlFor={obj.id}></label>
 								</div>
+                <h1 className="todo-app__item-detail">
 								{obj.item}
+                </h1>
 								<img src="img/x.png" className="todo-app__item-x" onClick={dropTodoItem} />
 							</li>
 						)
