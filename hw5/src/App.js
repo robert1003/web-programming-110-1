@@ -56,13 +56,13 @@ class Calculator {
     if (!isFinite(val)) return val;
     if (val.length <= 8) return val;
 
-    let a = Math.round(parseFloat(val)).toString()
-    let b = (parseFloat(val) - a).toPrecision(Math.max(1, 8 - a.length - 1));
+    let a = Math.floor(parseFloat(val)).toString()
+    let b = (parseFloat(val) - parseFloat(a)).toPrecision(Math.max(1, 8 - a.length - 1));
     console.log(a, b);
     if (a.length > 8) return parseFloat(a).toExponential(2);
     if (a === "0") {
-      if (parseFloat(val).toString().length > 9) return parseFloat(val).toExponential(2);
-      return parseFloat(val).toString();
+      if (parseFloat(val) < 1e-8) return parseFloat(val).toExponential(2);
+      return val.substring(0, Math.min(9, val.length))
     }
     if (Math.abs(parseFloat(b)) < 1e-8) return a;
     if ((a + "." + b.split(".")[1]).length > 8) return a;//parseFloat(val).toExponential(3);
@@ -84,10 +84,12 @@ class Calculator {
     } else {
       prev += digit;
     }
+    /*
     if (prev.length > 8) {
       this.valStk.push(backup);
       return;
     }
+    */
     this.isResult = false;
     this.valStk.push(prev);
     this.history.val = prev;
@@ -278,7 +280,41 @@ function App() {
     console.log(calculator.valStk, calculator.opStk, calculator.history);
     setVal(calculator.faceValue());
   }
+  let handleInput = (e) => {
+    if (e.shiftKey) {
+      // shift +
+      if (e.keyCode === 187) clickOp({"target": {"id": Operator.Add}});
+      // shift *
+      else if (e.keyCode === 56) clickOp({"target": {"id": Operator.Mul}});
+      // shift ^
+      else if (e.keyCode === 54) clickOp({"target": {"id": Operator.Power}});
+      // shift %
+      else if (e.keyCode === 53) clickFunc({"target": {"id": Operator.Percent}});
+    }
+    else {
+      // 0 - 9
+      if (e.keyCode >= 48 && e.keyCode <= 57) clickNum({"target": {"textContent": String(e.keyCode - 48)}});
+      // .
+      else if (e.keyCode === 110 || e.keyCode === 190) clickNum({"target": {"textContent": "."}});
+      // +
+      else if (e.keyCode === 107) clickOp({"target": {"id": Operator.Add}});
+      // -
+      else if (e.keyCode === 109 || e.keyCode === 189) clickOp({"target": {"id": Operator.Sub}});
+      // *
+      else if (e.keyCode === 106) clickOp({"target": {"id": Operator.Mul}});
+      // /
+      else if (e.keyCode === 111 || e.keyCode === 191) clickOp({"target": {"id": Operator.Div}});
+      // Enter or =
+      else if (e.keyCode === 13 || e.keyCode === 187) clickOp({"target": {"id": Operator.Eq}});
+      // C or AC
+      else if (e.keyCode === 67) document.getElementById('clear').click();
+    }
+  }
 
+  // added only once
+  useEffect(() => {
+    document.addEventListener("keydown", handleInput);
+  }, []);
   useEffect(() => {
     if (!calculator.new) document.getElementById("clear").textContent = "C";
     else document.getElementById("clear").textContent = "AC";
