@@ -54,19 +54,9 @@ class Calculator {
   processValue(val) {
     if (isNaN(val)) return "Error";
     if (!isFinite(val)) return val;
+    if (val.indexOf("e") !== -1) return parseFloat(val).toExponential(2);
+    return val.substring(0, Math.min(9, val.length));
     if (val.length <= 8) return val;
-
-    let a = Math.floor(parseFloat(val)).toString()
-    let b = (parseFloat(val) - parseFloat(a)).toPrecision(Math.max(1, 8 - a.length - 1));
-    console.log(a, b);
-    if (a.length > 8) return parseFloat(a).toExponential(2);
-    if (a === "0") {
-      if (parseFloat(val) < 1e-8) return parseFloat(val).toExponential(2);
-      return val.substring(0, Math.min(9, val.length))
-    }
-    if (Math.abs(parseFloat(b)) < 1e-8) return a;
-    if ((a + "." + b.split(".")[1]).length > 8) return a;//parseFloat(val).toExponential(3);
-    return (a + "." + b.split(".")[1]).trimRight("0");
   }
   faceValue() {
     let val = this.valStk.at(-1);
