@@ -18,11 +18,21 @@ export default function Dashboard({remainFlagNum, gameOver}){
     {/* Useful Hint: Try to understand the difference between time and sTime. */}
 
     useEffect(() => {
-      
-    }, []);
+        let interval = null;
+        if (!gameOver) {
+            interval = setInterval(() => {
+                setTime(x => x + 1);
+            }, 1000);
+        } else if (gameOver && time !== 0) {
+            setSTime(time);
+            setTime(0);
+            clearInterval(interval);
+        }
+
+        return () => clearInterval(interval);
+    }, [gameOver, time]);
 
     useEffect(() => {
-      
       
     }, []);
 
