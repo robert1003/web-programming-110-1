@@ -32,7 +32,7 @@ export default function Modal({restartGame, backToHome, win}){
                         {win && "New Game"}
                         {!win && "Try Again"}
                     </div>
-                    <div className="modalBtn" onClick={backToHome}>Back To Home</div>
+                    <div className="modalBtn" onClick={backToHome}>Back to Home</div>
                 </div>
             </div>
             <div className="modalWrapper"></div>
