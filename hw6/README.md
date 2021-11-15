@@ -1,1 +1,7 @@
-# wp1101
+# hw6
+
+## run
+```
+yarn start &
+yarn server &
+```
