@@ -20,6 +20,7 @@ export default function Dashboard({remainFlagNum, gameOver}){
     useEffect(() => {
         let interval = null;
         if (!gameOver) {
+            setSTime(time);
             interval = setInterval(() => {
                 setTime(x => x + 1);
             }, 1000);

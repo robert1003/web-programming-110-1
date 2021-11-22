@@ -19,7 +19,9 @@ const MineSweeper = () => {
     {/* Useful Hint: The four functions below only need to fill up with those three hook functions above. */}
     {/* -- TODO 1-2 -- */}
     const startGameOnClick = () => {
-        setStartGame(true);
+        if (mineNum <= boardSize * boardSize) {
+            setStartGame(true);
+        }
     }
     {/* -- TODO 6-2 -- */}
     const mineNumOnChange = (x) => {

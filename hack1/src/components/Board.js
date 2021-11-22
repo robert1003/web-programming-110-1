@@ -118,7 +118,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
             }
         }
 
-        if (nonMineCount + cnt === boardSize*boardSize - mineNum) {
+        if (board[x][y].value !== '💣' && nonMineCount + cnt === boardSize*boardSize - mineNum) {
             setWin(true);
             console.log("WIN WIN WIN");
         }
@@ -137,7 +137,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
                 {/* Reminder: Remember to use the component <Cell> and <Dashboard>. 
                     See Cell.js and Dashboard.js for detailed information. */}
                 <div className="boardContainer">
-                    <Dashboard remainFlagNum={remainFlagNum} gameOver={gameOver} />
+                    <Dashboard remainFlagNum={remainFlagNum} gameOver={gameOver || win} />
                     {
                         board.map((x, idx) => {
                             return <div id={`row${idx}`} style={{display:"flex"}}>
