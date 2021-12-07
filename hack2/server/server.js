@@ -29,7 +29,7 @@ mongoose.connect(process.env.MONGO_URL, {
   .then((res) => {
     if (process.env.MODE === 'EXAM') {
       console.log('EXAM');
-      dataInit();
+      //dataInit();
     }
   });
 
