@@ -48,7 +48,7 @@ router.post('/newPost', async (req, res) => {
 		await post.save();
 		res.status(200).json({ 'message': 'success' });
 	} catch (e) {
-		res.status(403).json({ 'message': 'error' });
+		res.status(403).json({ 'message': 'error', "post": null });
 	}
 });
 
@@ -58,7 +58,7 @@ router.delete('/post', async (req, res) => {
 	Post.deleteOne({ 'postId': req.query.pid }).then(() => {
 		res.status(200).json({ 'message': 'success' });
 	}).catch((e) => {
-		res.status(403).json({ 'message': 'error' });
+		res.status(403).json({ 'message': 'error', "post": null });
 	});
 });
 
