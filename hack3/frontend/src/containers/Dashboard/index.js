@@ -83,11 +83,11 @@ export default function Dashboard() {
       updateQuery: (prev, { subscriptionData }) => {
         if (!subscriptionData.data) return prev;
         const {
-          data: { id },
+          data: { taskDeleted },
         } = subscriptionData;
         return {
           tasks: prev.tasks.filter((task) => {
-            return task.id !== id;
+            return task.id !== taskDeleted;
           }),
         };
       },

@@ -7,7 +7,7 @@ export const GET_TASKS_QUERY = gql`
       id
       title
       dueDate
-      id
+      content
       status
     }
   }
