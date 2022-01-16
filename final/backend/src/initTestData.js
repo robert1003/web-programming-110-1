@@ -1,4 +1,4 @@
-import { newBoard, newComment, newPost, newUser } from "./resolvers/utilities";
+import { newBoard, newComment, newPost, newUser } from "./resolvers/utilities.js";
 const initUserTestData = async (db) => {
     await db.UserModel.deleteMany({});
     const users = []
@@ -11,9 +11,9 @@ const initUserTestData = async (db) => {
 const initBoardTestData = async (db) => {
     await db.BoardModel.deleteMany({});
     const boards = []
-    for(let i = 0; i < 3; i++){
-        boards.push(newBoard(db, "Board" + i));
-    }
+    boards.push(newBoard(db, "申請心得"));
+    boards.push(newBoard(db, "錄取匯報"));
+    boards.push(newBoard(db, "院系介紹"));
     await Promise.all(boards);
 }
 
@@ -36,9 +36,9 @@ const initPostAndCommentTestData = async (db) => {
 }
 
 const initTestData = (db) => {
-    initUserTestData(db);
-    initBoardTestData(db);
-    initPostAndCommentTestData(db);
+    // initUserTestData(db);
+    // initBoardTestData(db);
+    // initPostAndCommentTestData(db);
 }
 
 export default initTestData;

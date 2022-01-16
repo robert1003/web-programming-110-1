@@ -9,7 +9,7 @@ const BoardContext = createContext({
 
 const BoardProvider = (props) => {
 	const [board, _setBoard] = useState("");
-	const [boardList, _setBoardList] = useState(["Board0", "Board1", "Board2"]);
+	const [boardList, _setBoardList] = useState(["申請心得", "錄取匯報", "院系介紹"]);
 
 	useEffect(() => {
 		_setBoard(boardList[0]);

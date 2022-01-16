@@ -17,14 +17,16 @@ import { BrowserRouter } from "react-router-dom";
 import { LoginProvider } from './hooks/useLogin';
 import { BoardProvider } from './hooks/useBoard';
 
+const url = new URL("/graphql", window.location.href);
+
 // Create an http link:
 const httpLink = new HttpLink({
-  uri: 'http://localhost:4000/',
+  uri: url.href,
 });
 
 // Create a WebSocket link:
 const wsLink = new WebSocketLink({
-  uri: `ws://localhost:4000/`,
+  uri: url.href.replace("http", "ws"),
   options: { reconnect: true },
 });
 

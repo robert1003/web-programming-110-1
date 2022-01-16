@@ -1,7 +1,7 @@
-import { UserInputError } from "apollo-server";
-import { getUserByName, newUser, newPost, getBoardByName, getPostById, newComment } from "./utilities";
+import { UserInputError } from "apollo-server-express";
+import { getUserByName, newUser, newPost, getBoardByName, getPostById, newComment } from "./utilities.js";
 import bcrypt from "bcrypt";
-import * as jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import "dotenv-defaults/config.js";
 
 const Mutation = {

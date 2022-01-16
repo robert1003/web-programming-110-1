@@ -1,5 +1,5 @@
-import Board from "./Board";
-import { getUserByName, getCommentsByPostId, getPostById, getBoardByName, getCommentById } from "./utilities";
+import Board from "./Board.js";
+import { getUserByName, getCommentsByPostId, getPostById, getBoardByName, getCommentById } from "./utilities.js";
 const Query = {
   user(parent, args, { db }) {
     return getUserByName(db, args.UserName, "query user");

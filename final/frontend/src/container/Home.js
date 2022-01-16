@@ -62,10 +62,10 @@ export default function Home() {
 
         <Box sx={{ m: 2, width: "100%" }}>
           <Grid container spacing={0} mb={2} pt={0}>
-            <Grid item xs={3}>
+            <Grid item xs={2}>
               <Typography sx={{ width: "100%", height: "100%" }}>請選擇討論版：</Typography>
             </Grid>
-            <Grid item xs={9} sx={{ width: "100%", height: "100%" }}>
+            <Grid item xs={10} sx={{ width: "100%" }}>
               <Select 
                 size="small"
                 value={board}
