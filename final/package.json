@@ -1,0 +1,18 @@
+{
+  "name": "wp_final",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Troy0425/wp_final.git",
+  "author": "Troy0425 <b06902030@ntu.edu.tw>",
+  "license": "MIT",
+  "scripts": {
+    "frontend": "cd ./frontend && npm start",
+    "backend": "cd ./backend && npm start"
+  },
+  "devDependencies": {
+    "graphql": "^16.2.0",
+    "graphql-middleware": "^6.1.13",
+    "graphql-shield": "^7.5.0",
+    "graphql-tools": "^8.2.0"
+  }
+}
