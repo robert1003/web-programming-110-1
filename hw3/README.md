@@ -6,7 +6,3 @@ If you find it annoying, you can use the link at the bottom for testing. Thanks 
 
 ## Design
 **ALL** functions required in the spec is implemented.
-
-## Note
-
-This website is also deployed at [here](http://cl6.csie.org:65432/)

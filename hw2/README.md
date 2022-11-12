@@ -28,7 +28,3 @@ Two modes
 * normal mode (`min-width` >= 800)
 
 To observe the difference, one can resize the window horizontally
-
-## Note
-
-This website is also deployed at [here](http://cl6.csie.org:17893/)
